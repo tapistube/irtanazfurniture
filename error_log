@@ -1,0 +1,18 @@
+[16-Oct-2017 18:57:30 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting ')' in /home/malikkac/public_html/application/controllers/Penjual.php on line 1671
+[17-Oct-2017 23:02:03 America/Chicago] PHP Parse error:  syntax error, unexpected '$query' (T_VARIABLE) in /home/malikkac/public_html/application/models/M_penjual.php on line 385
+[19-Oct-2017 22:42:55 America/Chicago] PHP Fatal error:  Call to a member function getJumlahIsiKeranjang() on null in /home/malikkac/public_html/application/controllers/PelSementara.php on line 125
+[19-Oct-2017 22:50:00 America/Chicago] PHP Fatal error:  Call to a member function getJumlahIsiKeranjang() on null in /home/malikkac/public_html/application/controllers/PelSementara.php on line 125
+[20-Oct-2017 01:01:22 America/Chicago] PHP Fatal error:  Call to a member function getJumlahIsiKeranjang() on null in /home/malikkac/public_html/application/controllers/PelSementara.php on line 130
+[23-Oct-2017 20:22:25 America/Chicago] PHP Fatal error:  Call to a member function getKodeUKM() on null in /home/malikkac/public_html/application/controllers/Ukmgo.php on line 75
+[23-Oct-2017 20:24:21 America/Chicago] PHP Fatal error:  Call to a member function getKodeUKM() on null in /home/malikkac/public_html/application/controllers/Ukmgo.php on line 75
+[23-Oct-2017 20:27:02 America/Chicago] PHP Fatal error:  Call to a member function getKodeUKM() on null in /home/malikkac/public_html/application/controllers/Ukmgo.php on line 75
+[23-Oct-2017 21:51:40 America/Chicago] PHP Fatal error:  Call to a member function getKodeUKM() on null in /home/malikkac/public_html/application/controllers/Ukmgo.php on line 75
+[23-Oct-2017 22:45:35 America/Chicago] PHP Fatal error:  Call to a member function getKodeUKM() on null in /home/malikkac/public_html/application/controllers/Ukmgo.php on line 75
+[09-Nov-2017 19:56:04 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/malikkac/public_html/application/controllers/Penjual.php on line 311
+[09-Nov-2017 20:34:32 America/Chicago] PHP Parse error:  syntax error, unexpected ')' in /home/malikkac/public_html/application/controllers/Penjual.php on line 317
+[11-Nov-2017 01:06:02 America/Chicago] PHP Fatal error:  Cannot access empty property in /home/malikkac/public_html/application/controllers/Ukmgo.php on line 765
+[11-Nov-2017 01:07:03 America/Chicago] PHP Fatal error:  Cannot use [] for reading in /home/malikkac/public_html/application/controllers/Ukmgo.php on line 801
+[11-Nov-2017 01:07:22 America/Chicago] PHP Fatal error:  Cannot access empty property in /home/malikkac/public_html/application/controllers/Ukmgo.php on line 765
+[11-Nov-2017 01:07:35 America/Chicago] PHP Fatal error:  Cannot access empty property in /home/malikkac/public_html/application/controllers/Ukmgo.php on line 765
+[11-Nov-2017 02:02:19 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/malikkac/public_html/application/views/ukm/lihat_data_pesanan.php on line 64
+[11-Nov-2017 02:02:41 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/malikkac/public_html/application/views/ukm/lihat_data_pesanan.php on line 64
