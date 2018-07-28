@@ -1,14 +1,14 @@
 <?php
 class Model_User extends CI_Model{
 
-    var $table = 'tbl_customer';
+   var $table = 'tb_customer';
     
     function list_user(){
-        $data = $this->db->get('tbl_customer');
+        $data = $this->db->get(table);
         return $data;
     }
     function user_detail($id_customer){
-        return $this->db->get_where('tbl_customer',array('id_customer'=>$id_customer))->row();
+        return $this->db->get_where($this->table,array('id_customer'=>$id_customer))->row();
     } 
    
    public function get_user($user_name)

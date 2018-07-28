@@ -13,13 +13,21 @@ class Utama extends CI_Controller
     {
         parent::__construct();
         $this->load->helper(array('url'));
-        $this->load->library(array('form_validation','pagination'));
+        $this->load->library(array('form_validation','pagination','session'));
+        $this->load->model('Model_Produk');
+        $this->session->unset_userdata('errorMsg');
     }
 
     function index(){
 
         $this->load->view('header2');
         $this->load->view('beranda');
+        $this->load->view('footer');
+    }
+
+    public function googleMaps(){
+        $this->load->view('header2');
+        $this->load->view('map_view');
         $this->load->view('footer');
     }
 
@@ -65,6 +73,38 @@ class Utama extends CI_Controller
         $this->load->view('footer');
     }
 
+    function listProduk(){
+        $this->session->unset_userdata('idProduk');
+        $data['gambar'] = $this->Model_Produk->get_img_utama()->result();
+
+        $jumlah_data = $this->Model_Produk->listProduk()->num_rows();
+        $this->load->library('pagination');
+        $config['base_url'] = base_url().'Utama/listProduk/';
+        $config['total_rows'] = $jumlah_data;
+        $config['per_page'] = 9;
+
+        $config['full_tag_open'] = '<ul class="pagination pagination-lg">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&laquo;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo;';
+
+        $from = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+        $data['produk'] = $this->Model_Produk->list_produk_paging($config['per_page'],$from)->result();
+
+        $this->load->view('header2');
+        $this->load->view('list_produk',$data);
+        $this->load->view('footer');
+    }
+
     function loginAdmin(){
         $this->load->view('header2');
         $this->load->view('login_admin');
@@ -82,6 +122,16 @@ class Utama extends CI_Controller
         $this->load->view('footer');
     }
 
+    function detailProdukUser($id){
+        $datadet['detail_produk'] = $this->Model_Produk->getProdukById($id)->result();
+        $datadet['gambar'] = $this->Model_Produk->getImgById($id)->result();
+        $datadet['gambar_Utama'] = $this->Model_Produk->getImgUtamaById($id)->result();
+        $datadet['id_produk'] = $id;
+        $this->load->view('header2');
+        $this->load->view('detail_produk_user',$datadet);
+        $this->load->view('footer');
+    }
+
     function daftar(){
         $this->load->view('header2');
         $this->load->view('register_user');
@@ -89,6 +139,8 @@ class Utama extends CI_Controller
     }
 
     function berhasilDaftar(){
+
+        /*
         $daftar = $this->session->userdata('daftar');
         if(!empty($daftar['id_customer'])){
         $send['user_name'] = $daftar['user_name'];
@@ -121,10 +173,12 @@ class Utama extends CI_Controller
 
         $this->session->unset_userdata('daftar');
 
+        echo "berhasil daftar !";
+         }
+         */
         $this->load->view('header2');
         $this->load->view('berhasil_daftar_pelanggan');
         $this->load->view('footer');
-    }
     }
 
     function loginPelanggan(){

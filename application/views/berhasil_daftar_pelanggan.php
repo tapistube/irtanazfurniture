@@ -6,7 +6,7 @@
                 <div class="basic-login">
 
                     <h3>Pendaftaran Anda Berhasil ! </h3>
-                    <h4>Silahkan Cek Email untuk Mendapatkan Data Akun.</h4>
+                    <h4>Silahkan Login untuk melanjutkan.</h4>
                   <!--  </form> -->
                 </div>
             </div>

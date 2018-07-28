@@ -8,6 +8,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Admin extends CI_Controller
 {
+    var $gallerypath;
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->helper(array('form'));
+        $this->load->library(array('form_validation','session','encryption','pagination'));
+        $this->load->model('Model_Produk');
+
+        $userSession = $this->session->userdata('admin');
+        if ($userSession['bagian'] != "admin"){
+            redirect('Login');
+        }
+
+    }
+
     function index(){
 
         $this->load->view('admin/header_admin');
@@ -19,6 +34,16 @@ class Admin extends CI_Controller
         $this->load->view('admin/header_admin');
         $this->load->view('admin/sidebar_admin');
         $this->load->view('admin/input_data_sapi');
+    }
+
+    function inputProduk(){
+        $idProduk = $this->Model_Produk->getKodeProduk();
+        //print_r($idProduk);
+        $data["idProduk"] = $idProduk;
+        $this->load->view('admin/header_admin');
+        $this->load->view('admin/sidebar_admin');
+        $this->load->view('admin/input_data_produk',$data);
+
     }
 
     function ubahPass(){
@@ -33,6 +58,12 @@ class Admin extends CI_Controller
         $this->load->view('admin/upload_foto_sapi');
     }
 
+    function inputGambarProduk(){
+        $this->load->view('admin/header_admin');
+        $this->load->view('admin/sidebar_admin');
+        $this->load->view('admin/upload_foto_produk');
+    }
+
     function listSapi(){
         $this->session->unset_userdata('idsapi');
         $this -> load -> model('Model_Sapi');
@@ -40,6 +71,15 @@ class Admin extends CI_Controller
         $this->load->view('admin/header_admin');
         $this->load->view('admin/sidebar_admin',$data);
         $this->load->view('admin/list_data_sapi');
+    }
+
+    function listProduk(){
+        $this->session->unset_userdata('idProduk');
+       // echo "berhasil uplaod data gambar ! ";
+        $data['produk'] = $this->Model_Produk->listProduk()->result();
+        $this->load->view('admin/header_admin');
+        $this->load->view('admin/sidebar_admin',$data);
+        $this->load->view('admin/list_data_produk');
     }
 
     function detailSapi($id){

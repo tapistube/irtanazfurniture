@@ -29,13 +29,13 @@
                 <a href="<?php echo base_url();?>Admin"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-list-alt fa-fw"></i> Sapi<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-list-alt fa-fw"></i> Produk<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="<?php echo base_url();?>Admin/inputSapi">Input Sapi</a>
+                        <a href="<?php echo base_url();?>Admin/inputProduk">Input Produk</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url();?>Admin/listSapi">Data Sapi</a>
+                        <a href="<?php echo base_url();?>Admin/listProduk">Data Produk</a>
                     </li>
                 </ul>
 
@@ -74,7 +74,7 @@
                         <a href="#">Laporan Penjualan</a>
                     </li>
                     <li>
-                        <a href="#">Laporan Data Sapi</a>
+                        <a href="#">Laporan Data Produk</a>
                     </li>
                 </ul>
 

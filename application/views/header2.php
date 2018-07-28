@@ -24,6 +24,20 @@
     <link href="<?php echo base_url();?>assets4/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
     <script src="<?php echo base_url();?>assets1/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -41,7 +55,7 @@
                     <a href="<?php echo base_url();?>Utama">Home</a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url();?>Utama/listSapi">Produk</a>
+                    <a href="<?php echo base_url();?>Utama/listProduk">Produk</a>
                 </li>
                 <li>
                     <a href="<?php echo base_url();?>Utama/tentang">Tentang Kami</a>

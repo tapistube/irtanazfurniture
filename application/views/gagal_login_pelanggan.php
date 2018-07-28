@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Gagal login Admin</h1>
+                <h1>Gagal login</h1>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
 
                     <h3>Gagal Login, Username atau Password anda salah !</h3>
                     <h4>Silakan kembali ke halaman Login</h4>
-                    <a href="<?php echo base_url(); ?>Utama/loginAdmin">
+                    <a href="<?php echo base_url(); ?>Utama/loginPelanggan">
                         <h5>Kembali</h5>
                     </a>
                     <!--  </form> -->

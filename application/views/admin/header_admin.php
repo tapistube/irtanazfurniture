@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IndoPrimaBeef - Administrator</title>
+    <title>Irtanaz Furniture - Administrator</title>
     <!-- Core CSS - Include with every page -->
     <link href="<?php echo base_url();?>assets4/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="<?php echo base_url();?>assets4/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    <img src="<?php echo base_url();?>assets1/img/logo_indoprima.png" style="height:40px">
+                    <img src="<?php echo base_url();?>assets1/img/logo_irtanaz_furniture.png" style="height:40px">
                 </a>
             </div>
             <!-- end navbar-header -->

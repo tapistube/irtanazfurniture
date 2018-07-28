@@ -14,10 +14,7 @@
             </div>
             <div class="col-footer col-md-2 col-xs-6">
                 <h3>Tetap Terhubung</h3>
-                <ul class="footer-stay-connected no-list-style">
-                    <li><a href="#" class="facebook"></a></li>
-                    <li><a href="#" class="twitter"></a></li>
-                </ul>
+                <a class="btn btn-md" href="<?php echo base_url();?>Utama/googleMaps" style="width: 200px">Temukan Kami</a><br>
             </div>
         </div>
         <div class="row">

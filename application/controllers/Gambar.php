@@ -21,12 +21,12 @@ class Gambar extends CI_Controller {
             
             $datagambar = array(
             'id_gambar' => rand(10,99).rand(30,90),
-            'id_sapi' => $token=$this->input->post('id_sapi'),
+            'id_produk' => $token=$this->input->post('id_produk'),
             'nama_gambar' => $nama=$this->upload->data('file_name'),
             'token' => $token=$this->input->post('token_foto')
         );        	
         	
-        	$this->db->insert('tbl_gambar',$datagambar);
+        	$this->db->insert('tb_gambar',$datagambar);
         }
 
 
@@ -67,7 +67,7 @@ class Gambar extends CI_Controller {
 		$token=$this->input->post('token');
 
 		
-		$foto=$this->db->get_where('tbl_gambar',array('token'=>$token));
+		$foto=$this->db->get_where('tb_gambar',array('token'=>$token));
 
 
 		if($foto->num_rows()>0){
@@ -76,7 +76,7 @@ class Gambar extends CI_Controller {
 			if(file_exists($file=FCPATH.'/upload-foto/'.$nama_foto)){
 				unlink($file);
 			}
-			$this->db->delete('tbl_gambar',array('token'=>$token));
+			$this->db->delete('tb_gambar',array('token'=>$token));
 
 		}
 

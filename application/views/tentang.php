@@ -2,11 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <h3>IndoPrimaBeef</h3>
+                <h3>Irtanaz Furniture</h3>
                 <p>
-                    Kami merupakan perusahaan penggemukan sapi potong sekaligus konsultan penggemukan sapi potong. Kami beralamat di Kampung Adi Jaya, Kecamatan Terbanggi Besar, Kabupaten Lampung Tengah, Provinsi Lampung dan telah berdiri sejak tahun 2014.
+                    Kami merupakan Perusahan Meubel yang berfokus pada Jati Ukir Modern dan juga Desain Minimalis, dengan berbagai produk yang berkualitas sejak 20xx
+                    <br>
                 </p>
-                <h3>Feedlot, Cattle Trading and Consultant </h3>
+                <br>
+                <h3>Jati Ukir Modern dan Minimalis </h3>
             </div>
             <div class="col-sm-6">
 
@@ -15,22 +17,23 @@
                     <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                      <!--  <li data-target="#myCarousel" data-slide-to="2"></li> -->
                     </ol>
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <div class="item active">
-                            <img src="<?php echo base_url();?>assets1/img/indoprima2.jpg" alt="Los Angeles">
+                            <img src="<?php echo base_url();?>assets1/img/profil1.jpeg" alt="Los Angeles">
                         </div>
 
                         <div class="item">
-                            <img src="<?php echo base_url();?>assets1/img/indoprima1.jpg" alt="Chicago">
+                            <img src="<?php echo base_url();?>assets1/img/profil2.jpeg" alt="Chicago">
                         </div>
 
-                        <div class="item">
+                     <!--   <div class="item">
                             <img src="<?php echo base_url();?>assets1/img/indoprima3.jpg" alt="Chicago">
                         </div>
+                        -->
 
                     </div>
 
