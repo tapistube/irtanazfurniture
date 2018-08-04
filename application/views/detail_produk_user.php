@@ -8,10 +8,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" />
 
+<div>
+    <?php
+    $this->load->view('alert');
+    $stokProduk = 0;
+    ?>
+</div>
+
+
 <div class="section">
     <div class="container">
         <?php 
             foreach ($detail_produk as $b){
+                $stokProduk = $b->stok;
         ?>
         <div class="row">
             <!-- Product Image & Available Colors -->
@@ -76,10 +85,36 @@
                 <div class="col-sm-4">
                     <br>
                 </div>
+                <?php
+                if ($stokProduk > 0){
+                ?>
                 <?php echo form_open_multipart('Utama/berhasilMasukKeranjang')?>
                 <input type="hidden" value="<?php cetak($b->id_produk) ?>" id="txt_id_produk" name="txt_id_produk">
+                <input type="hidden" value="<?php cetak($b->stok) ?>" id="txt_stok_produk" name="txt_stok_produk">
+
                 <button class="btn btn-green btn-lg" type="submit">Beli Produk Ini</button>
-                <?php echo form_close();?>
+                <?php  echo form_close() ;?>
+                <?php }else { ?>
+                <button class="btn btn-green btn-lg" onclick="stokHabis()" type="submit">Beli Produk Ini</button>
+                <?php } ?>
+                <script>
+                    function sweet (){
+                        swal("Good job!", "You clicked the button!", "success");
+                    }
+                    function biasa() {
+                        swal("Your message");
+                    }
+                    function withTime() {
+                        swal({
+                            title: "Alert dengan waktu",
+                            text: "Pesan ini akan hilang dalam 2 detik",
+                            timer: 2000
+                        });
+                    }
+                    function stokHabis() {
+                        swal("Stok Habis!", "Anda tidak bisa membeli barang ini karena stoknya telah habis", "error");
+                    }
+                </script>
             </div>
 
 

@@ -91,6 +91,17 @@ class Admin extends CI_Controller
         $this->load->view('admin/sidebar_admin');
         $this->load->view('admin/detail_sapi',$datadet);
     }
+
+    function detailProduk($id){
+        $datadet['detail_produk'] = $this->Model_Produk->getProdukById($id)->result();
+        $datadet['gambar'] = $this->Model_Produk->getImgById($id)->result();
+        $datadet['gambar_Utama'] = $this->Model_Produk->getImgUtamaById($id)->result();
+        $datadet['id_produk'] = $id;
+        $this->load->view('admin/header_admin');
+        $this->load->view('admin/sidebar_admin');
+        $this->load->view('admin/detail_sapi',$datadet);
+    }
+
     function lanjutKeUpload(){
         $this->load->view('admin/header_admin');
         $this->load->view('admin/sidebar_admin');

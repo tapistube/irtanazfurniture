@@ -40,14 +40,14 @@
                     <tr>
                         <!-- Shopping Cart Item Image -->
                         <?php 
-                            foreach ($gambar as $c){ if($a->id_sapi == $c->id_sapi) {
+                            foreach ($gambar as $c){ if($a->id_produk == $c->id_produk) {
                         ?>
                         <td class="image"><a href="#"><img src="<?php echo base_url();?>upload-foto/<?php cetak($c->nama_gambar); ?>"
                                                                                    alt="Item Name"></a></td>
                         <?php }}?>
                         <!-- Shopping Cart Item Description & Features -->
                         <td>
-                          <h3><a href="#"><?php cetak($a->jenis_sapi);?> (No : <?php cetak($a->id_sapi);?>)</a></h3>
+                          <h3><a href="#"><?php cetak($a->nama_produk);?></a></h3>
                         </td>
                         <!-- Shopping Cart Item Quantity -->
                         <td class="quantity">
@@ -56,14 +56,37 @@
                         <td class="price">Rp.<?php cetak(number_format($a->harga,0,',','.')); ?></td>
                         <!-- Shopping Cart Item Actions -->
                         <td class="actions">
-                            <a onclick="return confirm('Apakah anda ingin menghapus sapi ini dari keranjang belanja?')" href="<?php echo base_url();?>Utama/Hapus_Transaksi/<?php cetak($a->id_keranjang);?>/<?php cetak($a->id_sapi);?>" class="btn btn-xs btn-grey"><i class="glyphicon glyphicon-trash"></i></a>
+                            <a onclick="return confirm('Apakah anda yakin menghapus produk ini ?')" href="<?php echo base_url();?>Utama/Hapus_Transaksi/<?php cetak($a->id_keranjang);?>" type="submit" class="btn btn-xs btn-grey"><i class="glyphicon glyphicon-trash"></i></a>
                         </td>
                     </tr>
-
+                    <script>
+                        function konfirmasiHapus() {
+                               event.preventDefault(); // prevent form submit
+                            var form = event.target.form; // storing the form
+                            swal({
+                                    title: "Apakah anda yakin?",
+                                    text: "Anda yakin menghapus produk ini dari keranjang ?",
+                                    type: "warning",
+                                    showCancelButton: true,
+                                    closeOnConfirm: false,
+                                    confirmButtonText: "Ya, Hapus ini!",
+                                    confirmButtonColor: "#ec6c62"
+                                },function (isConfirm) {
+                                    if (isConfirm){
+                                        //location.href='<//?php echo base_url()?>Utama/Hapus_Transaksi/<?php cetak($a->id_keranjang);?>';
+                                          form.submit();
+                                    }else {
+                                        swal("Cancelled", "Tidak menghapus produk", "error");
+                                    }
+                                }
+                            );
+                        }
+                    </script>
                     <!-- End Shopping Cart Item -->
                 </table>
                 <?php } ?>
                 <!-- End Shopping Cart Items -->
+
             </div>
         </div>
         <div class="row">
@@ -99,7 +122,7 @@
 
                 <div class="pull-right">
                <!--     <a href="#" class="btn btn-grey"><i class="glyphicon glyphicon-refresh"></i> UPDATE</a> -->
-                    <a href="<?php echo base_url();?>Utama/metodeBayar" class="btn"> Lanjutkan </a>
+                    <a href="<?php echo base_url();?>Utama/BayarOk" class="btn btn-lg"> Bayar </a>
                 </div>
                 
             </div>

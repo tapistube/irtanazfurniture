@@ -22,8 +22,10 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets1/css/main.css">
     <link href="<?php echo base_url();?>assets4/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="<?php echo base_url();?>assets4/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>assets3/SweetAlert/sweetalert.css" rel="stylesheet" />
 
     <script src="<?php echo base_url();?>assets1/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="<?php echo base_url();?>assets3/SweetAlert/sweetalert.min.js"></script>
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */

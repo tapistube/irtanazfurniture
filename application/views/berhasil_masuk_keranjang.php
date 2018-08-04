@@ -7,8 +7,8 @@
             <div class="col-sm-5">
                 <div class="basic-login">
 
-                    <h3>Anda Telah Menambahkan Sapi ke Keranjang belanja anda </h3>
-                    <h4>Jika telah selesai berbelanja silakan lakukan Checkout, jika belum anda dapat memilih Sapi kami yang lainnya</h4>
+                    <h3>Anda Telah Menambahkan Produk ke Keranjang belanja anda </h3>
+                    <h4>Jika telah selesai berbelanja silakan lakukan Checkout, jika belum anda dapat memilih Produk kami yang lainnya</h4>
                   <!--  </form> -->
                 </div>
             </div>
@@ -20,7 +20,7 @@
                     <br>
                         <a class="btn btn-lg" href="<?php echo base_url();?>Utama/keranjangBelanja" style="width: 200px">Checkout</a><br>
                     <br>
-                    <a class="btn btn-lg" href="<?php echo base_url();?>Utama/listSapi" style="width: 200px">Lanjut berbelanja</a>
+                    <a class="btn btn-lg" href="<?php echo base_url();?>Utama/listProduk" style="width: 200px">Lanjut berbelanja</a>
                 </div>
 
             </div>

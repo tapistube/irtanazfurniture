@@ -34,19 +34,18 @@
                     </div>
 
                     <div class="basic-login">
-                        <h5>Pastikan untuk tidak memberikan informasi pembayaran anda ke pihak lain selain IndoPrimaBeef</h5>
+                        <h5>Pastikan untuk tidak memberikan informasi pembayaran anda ke pihak lain selain IrtanazFurniture</h5>
                     </div>
 
                     <div class="basic-login">
                         <h3>Transfer Pembayaran ke No. Rekening :</h3>
                         <h4> Mandiri : 999-999-999-99999  </h4>
-                        <h4>a.n IndoPrimaBeef</h4>
+                        <h4>a.n Irtanaz Furniture</h4>
                         <br>
 
                         <h4>Pembayaran Sejumlah : Rp. <?php echo number_format($total,0,',','.'); ?> </h4>
                         <br>
                         <a class="btn btn-lg btn-green" href="<?php echo base_url();?>Utama/invoice/<?php echo $id_faktur ?>" target="_blank">Lihat Faktur</a>
-
                     </div>
 
 

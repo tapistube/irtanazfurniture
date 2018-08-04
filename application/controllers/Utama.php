@@ -15,6 +15,7 @@ class Utama extends CI_Controller
         $this->load->helper(array('url'));
         $this->load->library(array('form_validation','pagination','session'));
         $this->load->model('Model_Produk');
+        $this->load->model('Model_Transaksi');
         $this->session->unset_userdata('errorMsg');
     }
 
@@ -189,38 +190,35 @@ class Utama extends CI_Controller
 
     function berhasilMasukKeranjang(){
         $user = $this->session->userdata('customer');
+        $stok = $this->input ->post('txt_stok_produk');
+
         if(!empty($user['id_customer'])){
-        $id = $this->input ->post('txt_id_sapi');
-        $this -> load -> model('Model_Transaksi');
-        $datasapi = array(
-            'id_keranjang' => chr(rand(65,90)).chr(rand(65,90)).rand(1,10).rand(1,9),
-            'id_sapi' => $this->input ->post('txt_id_sapi'),
-            'id_customer' => $user['id_customer'],
-            
-        );        
-        $cek = $this->Model_Transaksi->save($datasapi);        
-        if($cek == true){
-            $this -> load -> model('Model_Sapi');
-            $datasapi = array(
-                'status' => '0',
-                
-            );
-        
-        $periksa = $this->Model_Sapi->update($id,$datasapi);
-        if($periksa == true){
-            $this->load->view('header2');
-            $this->load->view('berhasil_masuk_keranjang');
-            $this->load->view('footer');
-        }else{
-            echo "<script type='text/javascript'>alert('Data gagal disimpan');</script>";
-            redirect('Utama/detailSapiUser/'.$id);
-        }
-        
-            
-        }else{
-            echo "<script type='text/javascript'>alert('Data gagal disimpan');</script>";
-            redirect('Utama/detailSapiUser/'.$id);
-        }
+            $id = $this->input ->post('txt_id_produk');
+
+            if ($stok > 0) {
+
+                $this->load->model('Model_Transaksi');
+                $dataProduk = array(
+                    'id_keranjang' => chr(rand(65, 90)) . chr(rand(65, 90)) . rand(1, 10) . rand(1, 9),
+                    'id_produk' => $this->input->post('txt_id_produk'),
+                    'id_customer' => $user['id_customer'],
+
+                );
+
+                $cek = $this->Model_Transaksi->save($dataProduk);
+                if ($cek == true) {
+                    $this->load->view('header2');
+                    $this->load->view('berhasil_masuk_keranjang');
+                    $this->load->view('footer');
+                } else {
+                    $this->session->set_flashdata('error', 'Stok tidak mencukupi !');
+                    echo "<script type='text/javascript'>alert('Data gagal disimpan');</script>";
+                    redirect('Utama/detailProdukUser/' . $id);
+                }
+            }else{
+                echo "<script type='text/javascript'>alert('Stok Produk Sudah Habis');</script>";
+                redirect('Utama/detailProdukUser/' . $id);
+            }
         
         }else{
             redirect('Utama/loginPelanggan');
@@ -240,7 +238,7 @@ class Utama extends CI_Controller
         $this->load->view('footer');
         }
     }
-    function Hapus_Transaksi($id_keranjang,$id_sapi)
+    function Hapus_Transaksi($id_keranjang)
     {
 
         $this->load->model('Model_Transaksi');
@@ -248,18 +246,8 @@ class Utama extends CI_Controller
 
         $hapus = $this->Model_Transaksi->delete_by_kode($id_keranjang);
         if($hapus == true){
-            $datasapi = array(
-                'status' => '1',
-                
-            );
-            
-            $periksa = $this->Model_Sapi->update($id_sapi,$datasapi);
-            if($periksa == true){
-                redirect('Utama/keranjangBelanja');
-            }else{
-                echo "<script type='text/javascript'>alert('Data gagal disimpan');</script>";
-                redirect('Utama/keranjangBelanja');
-            }
+
+            redirect('Utama/keranjangBelanja');
 
         }else{
             echo "<script type='text/javascript'>alert('Gagal Hapus Data!')</script>";
@@ -282,44 +270,34 @@ class Utama extends CI_Controller
     if(!empty($user['id_customer'])){
         $this -> load -> model('Model_Transaksi');
         $data = $this->Model_Transaksi->get_keranjang($user['id_customer'])->result();
-        $metode = $this->input ->post('Txt_metodeBayar');
+
         foreach ($data as $key ) {
-            $datajual = array(
-                'id_temp' => $key->id_keranjang,
-                'id_sapi' => $key->id_sapi,
-                'id_customer' => $key->id_customer,
-                'id_faktur' => $id_faktur,
-                'tanggal_pengambilan' => $this->input ->post('txt_tanggal_ambil') ,
-                'metode_pembayaran' => $this->input ->post('Txt_metodeBayar'),
-                'status_bayar' => $this->input ->post('txt_status'),
-                
-            );
-            $this->Model_Transaksi->save_ok_temp($datajual);
-            $datajual_usr = array(
+
+            $dataDetailBeli = array(
                 'id_transaksi' => $key->id_keranjang,
-                'id_sapi' => $key->id_sapi,
+                'id_produk' => $key->id_produk,
                 'id_customer' => $key->id_customer,
                 'id_faktur' => $id_faktur,
-                'tanggal_pengambilan' => $this->input ->post('txt_tanggal_ambil') ,
-                'metode_pembayaran' => $this->input ->post('Txt_metodeBayar'),
-                'status_bayar' => $this->input ->post('txt_status'),
-                'status_pesanan' => '0'
             );
             
-            $this->Model_Transaksi->save_ok_user($datajual_usr);
-            // echo $key->id_sapi;
+            $this->Model_Transaksi->simpanDetailBeli($dataDetailBeli);
         }
+
+        $dataPesanan = array(
+            'id_faktur' => $id_faktur,
+            'id_customer'=>$user['id_customer'],
+            'status_bayar'=>'0'
+        );
+        $this->Model_Transaksi->simpanDataPesanan($dataPesanan);
+
         $incoice = $this->Model_Transaksi->delete_by_user($user['id_customer']);
-        //print_r($data);
+
+
         if ($incoice == true){
-            if($metode == 0){
             redirect('Utama/berhasilCheckout/'.$id_faktur);
-        }else if($metode == 1){
-            redirect('Utama/berhasilCheckoutTunai/'.$id_faktur);
-        }
         }else{
             echo "<script type='text/javascript'>alert('Gagal Hapus Data!')</script>";
-            redirect('Utama/metodeBayar');
+            redirect('Utama/keranjangBelanja');
         }
      }
         
