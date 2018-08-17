@@ -53,6 +53,67 @@ class Model_Produk extends CI_Model
         return $data;
     }
 
+    function listLemari(){
+        $this->db->where('kategori',"Lemari");
+        $data = $this->db->get($this->table);
+        return $data;
+    }
+
+    function listLemariPaging($number,$offset){
+        $this->db->where('kategori',"Lemari");
+        $data = $this->db->get('tb_produk',$number,$offset);
+        return $data;
+    }
+
+    function listMejaKursi(){
+        $this->db->where('kategori',"MejaKursi");
+        $data = $this->db->get($this->table);
+        return $data;
+    }
+
+    function listMejaKursiPaging($number,$offset){
+        $this->db->where('kategori',"MejaKursi");
+        $data = $this->db->get('tb_produk',$number,$offset);
+        return $data;
+    }
+
+    function listBufet(){
+        $this->db->where('kategori',"Bufet");
+        $data = $this->db->get($this->table);
+        return $data;
+    }
+
+    function listBufetPaging($number,$offset){
+        $this->db->where('kategori',"Bufet");
+        $data = $this->db->get('tb_produk',$number,$offset);
+        return $data;
+    }
+
+    function listTempatTidur(){
+        $this->db->where('kategori',"Tempat Tidur");
+        $data = $this->db->get($this->table);
+        return $data;
+    }
+
+    function listTempatTidurPaging($number,$offset){
+        $this->db->where('kategori',"Tempat Tidur");
+        $data = $this->db->get('tb_produk',$number,$offset);
+        return $data;
+    }
+
+    public function getImgUtamaLemari()
+    {
+        $this->db->where('kategori',"Lemari");
+        $this->db->group_by('id_produk');
+        $query = $this->db->get('tb_gambar');
+        return $query;
+    }
+
+    function update($id, $data){
+        $this->db->where('id_produk',$id);
+        $this->db->update($this->table,$data);
+        return true;
+    }
 
     public function get_img_utama()
     {
@@ -87,6 +148,20 @@ class Model_Produk extends CI_Model
         $this->db->group_by('id_produk');
         $query = $this->db->get('tb_gambar');
         return $query;
+    }
+
+    function deleteByKode($id){
+        $this->db->where('id_produk', $id);
+        $this->db->delete($this->table);
+
+        return true;
+    }
+
+    function deleteGambar($idPRoduk){
+        $this->db->where('id_produk', $idPRoduk);
+        $this->db->delete("tb_gambar");
+
+        return true;
     }
 
 

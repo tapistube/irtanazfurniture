@@ -4,7 +4,7 @@ class Model_User extends CI_Model{
    var $table = 'tb_customer';
     
     function list_user(){
-        $data = $this->db->get(table);
+        $data = $this->db->get($this->table);
         return $data;
     }
     function user_detail($id_customer){

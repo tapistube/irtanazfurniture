@@ -3,7 +3,7 @@
     <div class="row">
         <!-- Page Header -->
         <div class="col-lg-12">
-            <h1 class="page-header">Ubah Data Sapi</h1>
+            <h1 class="page-header">Ubah Data Produk</h1>
         </div>
         <!--End Page Header -->
     </div>
@@ -15,7 +15,7 @@
             <!-- Advanced Tables -->
             <div class="panel panel-default">
                 <div class= "panel-heading">
-                    Sapi
+                    Produk
                 </div>
                 <div class="panel-body">
 
@@ -26,32 +26,57 @@
                     </div>
                     <br>
                     
-                    <?php echo form_open_multipart('Sapi/ubah'); ?>
+                    <?php echo form_open_multipart('Produk/ubah'); ?>
                     <div class="form-group">
                          <?php 
-                            foreach ($detail_sapi as $b){
+                            foreach ($detail_produk as $b){
                         ?>
                          
                         <div class="col-md-12">
-                            <label class="control-label" for="txt_perihal">No. Sapi (ID Sapi) </label>
-                            <input class="form-control" type="text" name="txt_id" placeholder="Nomor Sapi" maxlength="30"
-                                   id="txt_id" value="<?php cetak($b->id_sapi) ?>"  disabled>
-                            <input type="hidden" value="<?php cetak($b->id_sapi) ?>" name="id" id="id"/>
+                            <label class="control-label" for="txt_perihal">Nama Produk </label>
+                            <input class="form-control" type="text" name="txt_namaProduk" placeholder="Nama Produk" maxlength="30"
+                                   id="txt_namaProduk" value="<?php cetak($b->nama_produk) ?>"  required>
+                            <input type="hidden" value="<?php cetak($b->id_produk) ?>" name="txt_id" id="txt_id"/>
                             <br>
                         </div>
                         <br>
 
                     <br>
-
+                    <?php
+                    $kategori = $b->kategori;
+                    ?>
                     <div class="col-md-12">
-                       <label class="control-label" for="txt_perihal">Jenis Sapi</label>
-                            <select class="form-control" name="txt_jenis" id="txt_jenis">
-                                <option value="" disabled>Pilih Jenis</option>
-                                <option value="Sapi Simental / Limosin">Sapi Simental / Limosin</option>
-                                <option value="Sapi PO">Sapi PO</option>
-                                <option value="Sapi Madura">Sapi Madura</option>
-                                <option value="Sapi Bali">Sapi Bali</option>
-                            </select>
+                       <label class="control-label" for="txt_perihal">Kategori</label>
+                        <select class="form-control" name="txt_kategori" id="txt_kategori" required>
+                            <option value="" disabled>Pilih Kategori</option>
+                            <?php
+
+                            if ($kategori == "MejaKursi") { ?>
+                                <option value="MejaKursi" selected>Meja & Kursi</option>
+                                <option value="Lemari">Lemari</option>
+                                <option value="Bufet">Bufet</option>
+                                <option value="Tempat Tidur">Tempat tidur</option>
+                            <?php
+                            }
+                            if ($kategori == "Lemari"){ ?>
+                                <option value="MejaKursi">Meja & Kursi</option>
+                                <option value="Lemari" selected>Lemari</option>
+                                <option value="Bufet">Bufet</option>
+                                <option value="Tempat Tidur">Tempat tidur</option>
+                            <?php
+                            }if ($kategori == "Bufet"){ ?>
+                                <option value="MejaKursi">Meja & Kursi</option>
+                                <option value="Lemari">Lemari</option>
+                                <option value="Bufet" selected>Bufet</option>
+                                <option value="Tempat Tidur">Tempat tidur</option>
+                            <?php
+                            } if ($kategori == "Tempat Tidur") { ?>
+                                <option value="MejaKursi">Meja & Kursi</option>
+                                <option value="Lemari">Lemari</option>
+                                <option value="Bufet">Bufet</option>
+                                <option value="Tempat Tidur" selected>Tempat tidur</option>
+                            <?php } ?>
+                        </select>
                         <br>
                     </div>
                         <script>
@@ -63,18 +88,11 @@
                                 return true;
                             }
                         </script>
-                    <br>
+                        <br>
                         <div class="col-md-12">
-                            <label class="control-label" for="txt_perihal">Berat Sekarang</label>
-                            <input class="form-control" type="text" name="txt_berat_skrg" placeholder="Berat sekarang"
-                                   maxlength="8" onkeypress="return hanyaAngka(event)" id="txt_berat_skrg" value="<?php cetak($b->berat_kotor) ?>" >
-                            <br>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label class="control-label" for="txt_perihal">Berat (Estimasi)</label>
-                            <input class="form-control" type="text" name="txt_berat_estimasi" placeholder="berat estimasi"
-                                   maxlength="8" onkeypress="return hanyaAngka(event)" id="txt_berat_estimasi" value="<?php cetak($b->berat_bersih) ?>" >
+                            <label class="control-label">Stok</label>
+                            <input class="form-control" type="text" onkeypress="return hanyaAngka(event)" name="txt_stok" id="txt_stok"
+                                   placeholder="Stok produk" maxlength="8" value="<?php cetak($b->stok); ?>"  required>
                             <br>
                         </div>
 
@@ -82,15 +100,21 @@
 
                     <div class="col-md-12">
                         <label class="control-label" for="txt_perihal">Harga</label>
-                        <input class="form-control" type="text" name="txt_harga" placeholder="Harga"
+                        <input class="form-control" type="text" name="txt_harga" placeholder="Harga" required
                                onkeypress="return hanyaAngka(event)" id="txt_harga"  value="<?php cetak(number_format($b->harga,0,',','.')); ?>" onkeyup="convertToRupiah(this);" >
                         <br>
                     </div>
 
-                    <div class="col-md-12" id="fgbutton" style="width: 100%">
+                        <div class="col-md-12">
+                            <label for="register-username"><i class="icon-user"></i> <b>Deskripsi Singkat Produk</b></label>
+                            <textarea id="txt_deskripsi" required class="form-control" name="txt_deskripsi" rows="7" value=""><?php cetak($b->deskripsi);?></textarea>
+                        </div>
+
+
+                        <div class="col-md-12" id="fgbutton" style="width: 100%">
                         <br>
                         <br>
-                        <button class="btn btn-primary btn-orange btn-lg" type="submit" value="ubah_sapi" name="ubah_sapi" id="ubah_sapi">Simpan Perubahan</button>
+                        <button class="btn btn-primary btn-orange btn-lg" type="submit" value="ubah_produk" name="ubah_produk" id="ubah_produk">Simpan Perubahan</button>
                     </div>
                     </div>
                     

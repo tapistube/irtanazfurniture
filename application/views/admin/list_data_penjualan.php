@@ -1,3 +1,9 @@
+ <!-- DataTables CSS -->
+    <link href="<?php echo base_url();?>assets5/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="<?php echo base_url();?>assets5/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
 <div id="page-wrapper">
 <div class="row">
     <br><br>
@@ -11,60 +17,55 @@
     ?>
 
     <div class="col-md-12">
-        <form class="navbar-form" role="search">
-            <div class="input-group add-on">
-                <input class="form-control" placeholder="Cari nama pelanggan atau Email Pelanggan" name="srch-term" id="srch-term" type="text">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-                </div>
-            </div>
-        </form>
-        <br>
+        <div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#">
+					<em class="fa fa-th-list"></em>
+				</a></li>
+				<li class="active">Halaman Data Penjualan</li>
+			</ol>
+		</div><!--/.row-->
+		
+		
+		
     </div>
 
     <div class="col-md-12">
-        <h3>Berikut adalah data Sapi yang telah terjual di IndoPrimaBeef</h3>
         <div class="panel panel-default">
             <div class="panel-heading">
-                Data Penjualan (Pengurutan berdasarkan data terbaru)
+                
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover">
+                    <table class="table table-striped table-bordered table-hover" id="tabel_sapi">
                         <thead>
                         <tr>
                             <th>No.</th>
+                            <th>ID Faktur</th>
+                            <th>Nama Customer</th>
                             <th>Tanggal Pembelian</th>
-                            <th>Nama</th>
-                            <th>Total Pembayaran</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
                         <?php $no = $this->uri->segment(3)+1;
                         ?>
                         <tbody>
-                        <tr>
-                            <td ><?php echo $no++;?></td>
-                            <td>15 Januari 2018 </td>
-                            <td>Roberto</td>
-                            <td >Rp. 15.000.000</td>
-                            <td style="width: 190px;" align="center">
-                                <div>
-                                    <a href="<?php echo base_url();?>Admin/detailPenjualan" class="btn btn-success btn-xs">Detail</a>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php 
+                            foreach ($penjualan as $b){
+                        ?>
                         <tr>
                             <td><?php echo $no++;?></td>
-                            <td>25 Februari 2018 </td>
-                            <td>Carlos </td>
-                            <td >Rp. 25.000.000</td>
+                            <td><?php cetak($b->id_faktur) ?></td>
+                            <td><?php cetak($b->nama_customer) ?></td>
+                            <td><?php echo date("d-F-Y",strtotime($b->tanggal_pembelian)); ?></td>
                             <td style="width: 190px;" align="center">
                                 <div>
-                                    <a href="<?php echo base_url();?>Admin/detailPembelian" class="btn btn-success btn-xs">Detail</a>
+                                    <a href="<?php echo base_url();?>Admin/detailPenjualan/<?php cetak($b->id_faktur) ?>" class="btn btn-success btn-xs">Lihat Detail</a>
                                 </div>
                             </td>
                         </tr>
+                        <?php } ?>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -73,3 +74,18 @@
     </div>
 </div>
 </div>
+
+
+  <!-- DataTables JavaScript -->
+    <script src="<?php echo base_url();?>assets5/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url();?>assets5/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>assets5/datatables-responsive/dataTables.responsive.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets5/Pemisah.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#tabel_sapi').DataTable({
+            responsive: true
+        });
+    });
+    
+    </script>

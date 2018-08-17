@@ -43,7 +43,7 @@
                                     <table class="table table-striped table-bordered table-hover">
                                         <tr>
                                             <td>Nama</td>
-                                            <td colspan="2"><?php cetak($a->nama_customer); ?></td>
+                                            <td colspan="2"><strong><?php cetak($a->nama_customer); ?></strong></td>
                                         </tr>
                                         <tbody>
                                         <tr>
@@ -58,13 +58,15 @@
                                             <td align="center">Alamat</td>
                                             <td align="center" colspan="2"><?php cetak($a->alamat_customer); ?></td>
                                         </tr>
+                                        <!--
                                         <tr>
                                             <td align="center">Password</td>
-                                            <td align="center"><?php cetak($this->encrypt->decode($a->password)); ?></td>
+                                            <td align="center"><//?php cetak($this->encrypt->decode($a->password)); ?></td>
                                             <td align="center">
-                                                <a href="<?php echo base_url();?>User/resetPass" class="btn btn-success btn-xs">Reset Password</a>
+                                                <a href="<//?php echo base_url();?>User/resetPass" class="btn btn-success btn-xs">Reset Password</a>
                                             </td>
                                         </tr>
+                                        -->
                                         </tbody>
                                     </table>
                                     <?php }?>

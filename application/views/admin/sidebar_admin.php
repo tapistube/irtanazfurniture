@@ -71,10 +71,10 @@
                 <a href="#"><i class="fa fa-file fa-fw"></i> Laporan<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#">Laporan Penjualan</a>
+                        <a href="<?php echo base_url();?>Admin/lapPenjualan">Laporan Penjualan</a>
                     </li>
                     <li>
-                        <a href="#">Laporan Data Produk</a>
+                        <a href="<?php echo base_url();?>Admin/laporanProduk">Laporan Data Produk</a>
                     </li>
                 </ul>
 

@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 class Model_R_Transaksi_User extends CI_Model{
 
     var $table = 'tb_detail_pembelian';
@@ -10,10 +11,10 @@ class Model_R_Transaksi_User extends CI_Model{
     , tb_detail_pembelian.id_customer
     , tb_customer.nama_customer
     , tb_customer.alamat_customer
-    , tb_customer.nope
     , tb_customer.user_name
     , tb_detail_pembelian.id_produk
     , tb_produk.kategori
+    , tb_produk.nama_produk
     , tb_produk.harga
     , DATE_FORMAT(tb_detail_pembelian.tanggal_pembelian,"%d %M %Y") AS tanggal_pembelian
     , tb_pesanan.status_bayar
@@ -63,17 +64,25 @@ class Model_R_Transaksi_User extends CI_Model{
 
     public function get_by_group($id_customer)
     {
-    $query = $this->db->query('SELECT tbl_detail_pembelian.id_faktur AS kode_faktur, tbl_detail_pembelian.id_customer, DATE_FORMAT(tbl_detail_pembelian.tanggal_pembelian,"%d %M %Y") AS tanggal,
-        (SELECT SUM(tbl_estalase.harga)  
+    $query = $this->db->query('SELECT tb_detail_pembelian.id_faktur AS kode_faktur, tb_detail_pembelian.id_customer, DATE_FORMAT(tb_detail_pembelian.tanggal_pembelian,"%d %M %Y") AS tanggal,
+        (SELECT SUM(tb_produk.harga)  
         FROM
-            db_jual_sapi.tbl_detail_pembelian
-            INNER JOIN db_jual_sapi.tbl_estalase 
-                ON (tbl_detail_pembelian.id_sapi = tbl_estalase.id_sapi) WHERE tbl_detail_pembelian.id_faktur = kode_faktur ) AS total
+            db_irtanaz.tb_detail_pembelian
+            INNER JOIN db_irtanaz.tb_produk 
+                ON (tb_detail_pembelian.id_produk = tb_produk.id_produk) WHERE tb_detail_pembelian.id_faktur = kode_faktur ) AS total
 FROM
-    db_jual_sapi.tbl_detail_pembelian
-    INNER JOIN db_jual_sapi.tbl_estalase 
-        ON (tbl_detail_pembelian.id_sapi = tbl_estalase.id_sapi) WHERE tbl_detail_pembelian.id_customer = '."'".$id_customer."'".' GROUP BY tbl_detail_pembelian.id_faktur');
+    db_irtanaz.tb_detail_pembelian
+    INNER JOIN db_irtanaz.tb_produk 
+        ON (tb_detail_pembelian.id_produk = tb_produk.id_produk) WHERE tb_detail_pembelian.id_customer = '."'".$id_customer."'".' GROUP BY tb_detail_pembelian.id_faktur');
         
+        return $query;
+    }
+
+    public function getImgById($id){
+        $this->db->from('tb_bukti_bayar');
+        $this->db->where('id_faktur',$id);
+        $query = $this->db->get();
+
         return $query;
     }
 

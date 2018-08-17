@@ -61,6 +61,7 @@
             </div>
         </div>
 
+        <!-- data pembelian user
         <div class="panel panel-default">
             <div class="panel-heading">
                 Data pembelian
@@ -76,7 +77,7 @@
                             <th>Aksi</th>
                         </tr>
                         </thead>
-                        <?php $no = $this->uri->segment(3)+1;
+                        <?php $no = 1;
                         ?>
                         <tbody>
                         <tr>
@@ -104,6 +105,8 @@
                 </div>
             </div>
         </div>
+        -->
+
     </div>
 </div>
 </div>

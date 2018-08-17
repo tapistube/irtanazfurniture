@@ -16,6 +16,7 @@ class Utama extends CI_Controller
         $this->load->library(array('form_validation','pagination','session'));
         $this->load->model('Model_Produk');
         $this->load->model('Model_Transaksi');
+        $this->load->model('Model_Pesanan');
         $this->session->unset_userdata('errorMsg');
     }
 
@@ -100,6 +101,134 @@ class Utama extends CI_Controller
         $from = $this->uri->segment(3);
         $this->pagination->initialize($config);
         $data['produk'] = $this->Model_Produk->list_produk_paging($config['per_page'],$from)->result();
+
+        $this->load->view('header2');
+        $this->load->view('list_produk',$data);
+        $this->load->view('footer');
+    }
+
+    function listProdukLemari(){
+        $this->session->unset_userdata('idProduk');
+        $data['gambar'] = $this->Model_Produk->get_img_utama()->result();
+
+        $jumlah_data = $this->Model_Produk->listLemari()->num_rows();
+        $this->load->library('pagination');
+        $config['base_url'] = base_url().'Utama/listProdukLemari/';
+        $config['total_rows'] = $jumlah_data;
+        $config['per_page'] = 9;
+
+        $config['full_tag_open'] = '<ul class="pagination pagination-lg">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&laquo;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo;';
+
+        $from = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+        $data['produk'] = $this->Model_Produk->listLemariPaging($config['per_page'],$from)->result();
+
+        $this->load->view('header2');
+        $this->load->view('list_produk',$data);
+        $this->load->view('footer');
+    }
+
+    function listProdukMejaKursi(){
+        $this->session->unset_userdata('idProduk');
+        $data['gambar'] = $this->Model_Produk->get_img_utama()->result();
+
+        $jumlah_data = $this->Model_Produk->listMejaKursi()->num_rows();
+        $this->load->library('pagination');
+        $config['base_url'] = base_url().'Utama/listProdukMejaKursi/';
+        $config['total_rows'] = $jumlah_data;
+        $config['per_page'] = 9;
+
+        $config['full_tag_open'] = '<ul class="pagination pagination-lg">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&laquo;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo;';
+
+        $from = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+        $data['produk'] = $this->Model_Produk->listMejaKursiPaging($config['per_page'],$from)->result();
+
+        $this->load->view('header2');
+        $this->load->view('list_produk',$data);
+        $this->load->view('footer');
+    }
+
+    function listProdukBufet(){
+        $this->session->unset_userdata('idProduk');
+        $data['gambar'] = $this->Model_Produk->get_img_utama()->result();
+
+        $jumlah_data = $this->Model_Produk->listBufet()->num_rows();
+        $this->load->library('pagination');
+        $config['base_url'] = base_url().'Utama/listProdukBufet/';
+        $config['total_rows'] = $jumlah_data;
+        $config['per_page'] = 9;
+
+        $config['full_tag_open'] = '<ul class="pagination pagination-lg">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&laquo;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo;';
+
+        $from = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+        $data['produk'] = $this->Model_Produk->listBufetPaging($config['per_page'],$from)->result();
+
+        $this->load->view('header2');
+        $this->load->view('list_produk',$data);
+        $this->load->view('footer');
+    }
+
+    function listProdukTempatTidur(){
+        $this->session->unset_userdata('idProduk');
+        $data['gambar'] = $this->Model_Produk->get_img_utama()->result();
+
+        $jumlah_data = $this->Model_Produk->listTempatTidur()->num_rows();
+        $this->load->library('pagination');
+        $config['base_url'] = base_url().'Utama/listProdukTempatTidur/';
+        $config['total_rows'] = $jumlah_data;
+        $config['per_page'] = 9;
+
+        $config['full_tag_open'] = '<ul class="pagination pagination-lg">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&laquo;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo;';
+
+        $from = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+        $data['produk'] = $this->Model_Produk->listTempatTidurPaging($config['per_page'],$from)->result();
 
         $this->load->view('header2');
         $this->load->view('list_produk',$data);
@@ -285,6 +414,7 @@ class Utama extends CI_Controller
 
         $dataPesanan = array(
             'id_faktur' => $id_faktur,
+            'nama_customer'=>$user['nama_customer'],
             'id_customer'=>$user['id_customer'],
             'status_bayar'=>'0'
         );
@@ -307,19 +437,19 @@ class Utama extends CI_Controller
         $user = $this->session->userdata('customer');
         if(!empty($user['id_customer'])){
         $this -> load -> model('Model_R_Transaksi_User');
-        $send['faktur'] = $this->Model_R_Transaksi_User->get_by_kode($id_faktur)->result();
-        $baca = $this->Model_R_Transaksi_User->get_by_kode($id_faktur)->result();
+        $send['faktur'] = $this->Model_Pesanan->getPesananByKode($id_faktur)->result();
+        $baca = $this->Model_Pesanan->getPesananByKode($id_faktur)->result();
         foreach ($baca as $key) {
             $to_email = $key->user_name;
         }
 
-        $notif = $this->load->view('Invoice_faktur',$send,TRUE);
+        $notif = $this->load->view('invoice_new',$send,TRUE);
 
         $config['protocol'] = "smtp";
         $config['smtp_host'] = "ssl://smtp.gmail.com";
         $config['smtp_port'] = "465";
-        $config['smtp_user'] = "indoprimabeef1@gmail.com";
-        $config['smtp_pass'] = "1nd0pr1m4b33f";
+        $config['smtp_user'] = "tapiskuy3@gmail.com";
+        $config['smtp_pass'] = "asakura1.";
         $config['charset'] = "utf-8";
         $config['mailtype'] = "html";
         $config['newline'] = "\r\n";
@@ -327,10 +457,10 @@ class Utama extends CI_Controller
        
         $this->email->initialize($config);
        
-        $from_email = "indoprimabeef1@gmail.com"; 
+        $from_email = "tapiskuy3@gmail.com";
         //$to_email = 'aemail470@gmail.com' ;
       
-        $this->email->from($from_email,"Indoprima Beef"); 
+        $this->email->from($from_email,"Irtanaz Furniture");
         $this->email->to($to_email);
         $this->email->subject('Faktur Belanja'); 
         $this->email->message($notif);

@@ -68,6 +68,9 @@
                 <li>
                     <a href="<?php echo base_url();?>Utama/keranjangBelanja">Keranjang Belanja</a>
                 </li>
+                <li>
+                    <a href="<?php echo base_url();?>User">Dashboard</a>
+                </li>
                 <?php } ?>
 
                 <li class="pull-right" style="padding-top: 20px;color: white">

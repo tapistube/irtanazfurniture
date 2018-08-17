@@ -3,41 +3,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Created by PhpStorm.
  * User: Glory
- * Date: 14/08/2018
- * Time: 11:23
+ * Date: 17/08/2018
+ * Time: 14:25
  */
-class Model_Pesanan extends CI_Model
+class Model_Penjualan extends CI_Model
 {
-    var $table = "tb_pesanan";
+    var $table = "tb_penjualan";
 
-    function listPesanan(){
-        $this->db->where('status_bayar != 2');
+    function listPenjualan(){
         $data = $this->db->get($this->table);
         return $data;
     }
 
-    function listPesananPaging($number,$offset){
-        $this->db->where('status_bayar != 2');
+    function listPenjualanPaging($number,$offset){
         $data = $this->db->get($this->table,$number,$offset);
         return $data;
     }
 
-    function getDataPesanan(){
-        $query = $this->db->query('SELECT
-    tb_pesanan.id_faktur
-    , tb_pesanan.id_customer
-    , tb_pesanan.tanggal_pembelian
-    , tb_pesanan.status_bayar
-    , tb_customer.nama_customer
-FROM
-    db_irtanaz.tb_pesanan
-    , db_irtanaz.tb_detail_pembelian
-    , db_irtanaz.tb_customer;');
-
+    function getDataPenjualanByTanggal($tgl1,$tgl2){
+        $this->db->where('tanggal_pembelian >=', $tgl1);
+        $this->db->where('tanggal_pembelian <=', $tgl2);
+        $query=$this->db->get($this->table);
         return $query;
     }
 
-    public function getPesananByKode($id_faktur)
+    public function reportPenjualan($tgl1,$tgl2)
     {
         $query = $this->db->query('SELECT tb_detail_pembelian.id_transaksi
     , tb_detail_pembelian.id_faktur
@@ -61,7 +51,7 @@ FROM
         ON (tb_detail_pembelian.id_customer = tb_customer.id_customer)
     INNER JOIN db_irtanaz.tb_pesanan 
         ON (tb_detail_pembelian.id_faktur = tb_pesanan.id_faktur)    
-        	where tb_detail_pembelian.id_faktur = '."'".$id_faktur."'");
+        	where tb_pesanan.status_bayar = '."'2'".'and tb_pesanan.tanggal_pembelian >= '."'$tgl1'".'and tb_pesanan.tanggal_pembelian <= '."'$tgl2.'");
 
         return $query;
     }

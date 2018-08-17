@@ -24,16 +24,16 @@
 
             <div class="col-md-12">
                 <div class="col-md-3" align="center">
-                    <a href="#" class="btn btn-orange btn-lg">Meja & Kursi</a>
+                    <a href="<?php echo base_url();?>Utama/listProdukMejaKursi" class="btn btn-orange btn-lg">Meja & Kursi</a>
                 </div>
                 <div class="col-md-3" align="center">
-                    <a href="#" class="btn btn-blue btn-lg">Lemari</a>
+                    <a href="<?php echo base_url();?>Utama/listProdukLemari" class="btn btn-blue btn-lg">Lemari</a>
                 </div>
                 <div class="col-md-3" align="center">
-                    <a href="#" class="btn btn-red btn-lg">Bufet</a>
+                    <a href="<?php echo base_url();?>Utama/listProdukBufet" class="btn btn-red btn-lg">Bufet</a>
                 </div>
                 <div class="col-md-3" align="center">
-                    <a href="#" class="btn btn-green btn-lg">Tempat Tidur</a>
+                    <a href="<?php echo base_url();?>Utama/listProdukTempatTidur" class="btn btn-green btn-lg">Tempat Tidur</a>
                 </div>
             </div>
 

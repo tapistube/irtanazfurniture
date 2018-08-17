@@ -81,7 +81,7 @@
                         <ul>
                             <li class="portfolio-project-name">Lemari</li>
                             <li>Lemari Kayu </li>
-                            <li class="read-more"><a href="#" class="btn">Beli</a></li>
+                            <li class="read-more"><a href="<?php echo base_url();?>Utama/listProdukLemari" class="btn">Beli</a></li>
                         </ul>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                         <ul>
                             <li class="portfolio-project-name">Meja & Kursi</li>
                             <li>Set Meja Dan Kursi</li>
-                            <li class="read-more"><a href="#" class="btn">Beli</a></li>
+                            <li class="read-more"><a href="<?php echo base_url();?>Utama/listProdukMejaKursi" class="btn">Beli</a></li>
                         </ul>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                         <ul>
                             <li class="portfolio-project-name">Bufet</li>
                             <li>Bufet berbagai macam warna</li>
-                            <li class="read-more"><a href="#" class="btn">Beli</a></li>
+                            <li class="read-more"><a href="<?php echo base_url();?>Utama/listProdukBufet" class="btn">Beli</a></li>
                         </ul>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                         <ul>
                             <li class="portfolio-project-name">Tempat Tidur</li>
                             <li>Tempat tidur dan Dipan</li>
-                            <li class="read-more"><a href="#" class="btn">Beli</a></li>
+                            <li class="read-more"><a href="<?php echo base_url();?>Utama/listProdukTempatTidur" class="btn">Beli</a></li>
                         </ul>
                     </div>
                 </div>

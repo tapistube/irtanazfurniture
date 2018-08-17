@@ -39,14 +39,14 @@
                         <div class="col-md-12">
                             <label class="control-label">Nama Produk</label>
                             <input class="form-control" type="text" name="txt_namaProduk" placeholder="Nama Produk" maxlength="30"
-                                   id="txt_namaProduk">
+                                   id="txt_namaProduk" required>
                             <br>
                         </div>
                         <br>
 
                     <div class="col-md-12">
                        <label class="control-label" for="txt_perihal">Kategori</label>
-                            <select class="form-control" name="txt_kategori" id="txt_kategori">
+                            <select class="form-control" name="txt_kategori" id="txt_kategori" required>
                                 <option value="" disabled>Pilih Kategori</option>
                                 <option value="MejaKursi">Meja & Kursi</option>
                                 <option value="Lemari">Lemari</option>
@@ -68,20 +68,20 @@
                         <div class="col-md-12">
                             <label class="control-label">Stok</label>
                             <input class="form-control" type="text" onkeypress="return hanyaAngka(event)" name="txt_stok" id="txt_stok"
-                                   placeholder="Stok produk" maxlength="8"  >
+                                   placeholder="Stok produk" maxlength="8"  required>
                             <br>
                         </div>
                     <br>
 
                     <div class="col-md-12">
                         <label class="control-label" for="txt_perihal">Harga</label>
-                        <input class="form-control" type="text" name="txt_harga" placeholder="Harga" onkeypress="return hanyaAngka(event)" id="txt_harga" onkeyup="convertToRupiah(this);">
+                        <input class="form-control" required type="text" name="txt_harga" placeholder="Harga" onkeypress="return hanyaAngka(event)" id="txt_harga" onkeyup="convertToRupiah(this);">
                         <br>
                     </div>
 
                         <div class="col-md-12">
                             <label for="register-username"><i class="icon-user"></i> <b>Deskripsi Singkat Produk</b></label>
-                            <textarea id="txt_deskripsi" class="form-control" name="txt_deskripsi" rows="7" value="<?php echo set_value('txt_deskripsi')?>"></textarea>
+                            <textarea id="txt_deskripsi" required class="form-control" name="txt_deskripsi" rows="7" value="<?php echo set_value('txt_deskripsi')?>"></textarea>
                         </div>
 
                     <div class="col-md-12" id="fgbutton" style="width: 100%">

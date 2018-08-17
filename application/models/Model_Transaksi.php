@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 class Model_Transaksi extends CI_Model{
 
     var $table = 'tb_keranjang';

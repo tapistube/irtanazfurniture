@@ -37,27 +37,31 @@
                             <div class="panel-body">
                                 <div class="basic-login">
                                     <h4>Silakan Upload bukti pembayaran yang telah anda foto</h4>
-                                    <form>
 
+                                        <?php echo form_open_multipart('User/prosesUploadBukti'); ?>
+
+                                        <input class="form-control" type="hidden" name="txt_id_faktur" placeholder="Id faktur" maxlength="30"
+                                               id="txt_id_faktur" value="<?php echo $idFaktur; ?>" >
                                         <div class="form-group">
                                             <label class="control-label" for="txt_perihal">Jenis Pembayaran</label>
-                                            <select class="form-control" name="txt_jenis" id="txt_jenis">
+                                            <select class="form-control" name="txt_jenis" id="txt_jenis" required>
                                                 <option value="" disabled>Pilih Jenis</option>
                                                 <option value="1">DP</option>
                                                 <option value="2">Sisa Pembayaran (Pelunasan)</option>
-                                                <option value="3">Lunas</option>
+                                                <option value="3">Bayar Lunas</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="register-username"><i class="ui-icon-image"></i> <b>Upload foto</b></label>
-                                            <input type="file" name="img_bukti" id="img_bukti" class="form-control">
+                                            <input type="file" name="userfile" id="userfile" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn pull-right">Upload</button>
                                             <div class="clearfix"></div>
                                         </div>
-                                    </form>
+
+                                    <?php echo form_close(); ?>
                                 </div>
                             </div>
                         </div>

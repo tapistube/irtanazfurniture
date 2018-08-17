@@ -24,18 +24,18 @@
         <!--quick info section -->
         <div class="col-lg-3">
             <div class="alert alert-info text-center">
-                <i class="fa fa-clipboard fa-3x"></i>&nbsp;<b>100 </b>Produk Terdaftar
+                <i class="fa fa-clipboard fa-3x"></i>&nbsp;<b><?php cetak($jml_produk); ?> </b>Produk Terdaftar
 
             </div>
         </div>
         <div class="col-lg-3">
             <div class="alert alert-success text-center">
-                <i class="fa  fa-sign-out fa-3x"></i>&nbsp;<b>200  </b>Produk Terjual
+                <i class="fa  fa-sign-out fa-3x"></i>&nbsp;<b><?php cetak($jml_penjualan); ?>  </b>Penjualan
             </div>
         </div>
         <div class="col-lg-3">
             <div class="alert alert-success text-center">
-                <i class="fa fa-list-alt fa-3x"></i>&nbsp;<b>20  </b>Produk dalam pesanan
+                <i class="fa fa-list-alt fa-3x"></i>&nbsp;<b><?php cetak($jml_pesanan); ?>  </b>Pesanan dalam proses
 
             </div>
         </div>

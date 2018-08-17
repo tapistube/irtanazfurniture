@@ -22,7 +22,7 @@
 				<li><a href="#">
 					<em class="fa fa-th-list"></em>
 				</a></li>
-				<li class="active">Halaman Data Produk</li>
+				<li class="active">Halaman Data Pesanan</li>
 			</ol>
 		</div><!--/.row-->
 		
@@ -41,10 +41,10 @@
                         <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Produk</th>
-                            <th>Kategori</th>
-                            <th>Harga</th>
-                            <th>Stok</th>
+                            <th>ID Faktur</th>
+                            <th>Nama Customer</th>
+                            <th>Tanggal</th>
+                            <th>Status Pembayaran</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
@@ -52,17 +52,26 @@
                         ?>
                         <tbody>
                         <?php 
-                            foreach ($produk as $b){
+                            foreach ($pesanan as $b){
                         ?>
                         <tr>
                             <td><?php echo $no++;?></td>
-                            <td><?php cetak($b->nama_produk) ?></td>
-                            <td><?php cetak($b->kategori) ?></td>
-                            <td>Rp. <?php cetak(number_format($b->harga,0,',','.')); ?></td>
-                            <td><?php cetak($b->stok) ?></td>
+                            <td><?php cetak($b->id_faktur) ?></td>
+                            <td><?php cetak($b->nama_customer) ?></td>
+                            <td><?php echo date("d-F-Y",strtotime($b->tanggal_pembelian)); ?></td>
+                            <?php
+                            $status  = $b->status_bayar;
+                            if ($status == "0") {
+                            ?>
+                            <td>Belum DP</td>
+                            <?php } if ($status == "1") { ?>
+                            <td>Sudah DP</td>
+                            <?php } if ($status == "2") { ?>
+                            <td>Lunas</td>
+                            <?php } ?>
                             <td style="width: 190px;" align="center">
                                 <div>
-                                    <a href="<?php echo base_url();?>Admin/detailProduk/<?php cetak($b->id_produk) ?>" class="btn btn-success btn-xs">Lihat</a>
+                                    <a href="<?php echo base_url();?>Admin/detailPesanan/<?php cetak($b->id_faktur) ?>" class="btn btn-success btn-xs">Lihat Detail</a>
                                 </div>
                             </td>
                         </tr>
