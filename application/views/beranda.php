@@ -5,9 +5,9 @@
             <!-- Slide 1 -->
             <li class="bg4">
                 <!-- Slide Title -->
-                <h2 class="title">Kayu Kualitas Terbaik</h2>
+                <h2 class="title" style="font-size: 40px;">Kayu Kualitas Terbaik</h2>
                 <!-- Slide Text -->
-                <h3 class="subtitle">Kami menyediakan kayu berkualitas</h3>
+                <h3 class="subtitle" style="font-size: 30px;">Kami menyediakan kayu berkualitas</h3>
                 <!-- Slide Image -->
             </li>
             <!-- End Slide 1 -->
@@ -16,7 +16,7 @@
                 <!-- Slide Title -->
                 <h2 class="title">Desain Modern</h2>
                 <!-- Slide Text -->
-                <h3 class="subtitle">Desain meubel yang modern</h3>
+                <h3 class="subtitle" style="font-size: 30px;">Desain meubel yang modern</h3>
                 <!-- Slide Image -->
             </li>
             <!-- End Slide 2 -->
@@ -25,7 +25,7 @@
                 <!-- Slide Title -->
                 <h2 class="title">Banyak Pilihan</h2>
                 <!-- Slide Text -->
-                <h3 class="subtitle">Dengan berbagai jenis meubel, kami menyediakan banyak produk yang bersaing!</h3>
+                <h3 class="subtitle" style="font-size: 30px;">Dengan berbagai jenis meubel, kami menyediakan banyak produk yang bersaing!</h3>
                 <!-- Slide Image -->
             </li>
             <!-- End Slide 3 -->

@@ -257,7 +257,9 @@ class Utama extends CI_Controller
         $datadet['gambar'] = $this->Model_Produk->getImgById($id)->result();
         $datadet['gambar_Utama'] = $this->Model_Produk->getImgUtamaById($id)->result();
         $datadet['id_produk'] = $id;
-        $this->load->view('header2');
+
+
+       $this->load->view('header2');
         $this->load->view('detail_produk_user',$datadet);
         $this->load->view('footer');
     }
